@@ -72,12 +72,15 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
             }
         }
 
+        Spacer(modifier = Modifier.height(16.dp))
+
         //Middle part
         LazyColumn(
+            modifier = Modifier.weight(1f),
+            contentPadding = PaddingValues(vertical = 8.dp)
         ) {
 
-            items(post) {
-                posts ->
+            items(post) { postItem ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -95,7 +98,7 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
                     {
                         Row(
                             modifier = Modifier.fillMaxWidth().padding(18.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween
+                            verticalAlignment = Alignment.Top
                         )
                         {
                             Image(
@@ -107,8 +110,8 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
 
                             Spacer(Modifier.width(16.dp))
 
-                            Column(modifier = Modifier) {
-                                Text(text = "${posts.name}",
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(text = "${postItem.name}",
                                     color = Color.Black,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold
@@ -117,7 +120,7 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
                                 Spacer(modifier = Modifier.height(6.dp))
 
                                 Text(
-                                    text = "${posts.email}",
+                                    text = "${postItem.email}",
                                     color = Color.Blue,
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Normal
@@ -126,7 +129,7 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
                                 Spacer(modifier = Modifier.height(10.dp))
 
                                 Text(
-                                    "${posts.body}",
+                                    "${postItem.body}",
                                     color = Color.Gray,
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Normal
@@ -143,7 +146,6 @@ fun CommentsUI(viewModel: PostViewModel = viewModel())
         //bottom
 
         Button(onClick = {},
-            modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
             colors = ButtonDefaults.buttonColors(containerColor = Color.Blue))
         {
             Text("Post a comment",

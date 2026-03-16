@@ -5,9 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.commentsui"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.commentsui"
@@ -34,6 +32,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
