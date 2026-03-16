@@ -1,7 +1,7 @@
 package com.example.commentsui
 
-class Post (
-    postId : Int,
+data class Post (
+    val postId : Int,
     val id : Int,
     val name : String,
     val email : String,
